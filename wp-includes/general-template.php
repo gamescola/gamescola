@@ -315,20 +315,23 @@ function wp_login_form( $args = array() ) {
 	$args = wp_parse_args( $args, apply_filters( 'login_form_defaults', $defaults ) );
 
 	$form = '
-		<form name="' . $args['form_id'] . '" id="' . $args['form_id'] . '" action="' . esc_url( site_url( 'wp-login.php', 'login_post' ) ) . '" method="post">
+		<form class="loginform" name="' . $args['form_id'] . '" id="' . $args['form_id'] . '" action="' . esc_url( site_url( 'wp-login.php', 'login_post' ) ) . '" method="post">
 			' . apply_filters( 'login_form_top', '', $args ) . '
 			<p class="login-username">
 				<label for="' . esc_attr( $args['id_username'] ) . '">' . esc_html( $args['label_username'] ) . '</label>
-				<input type="text" name="log" id="' . esc_attr( $args['id_username'] ) . '" class="input" value="' . esc_attr( $args['value_username'] ) . '" size="20" />
+				<input type="text" name="log" id="' . esc_attr( $args['id_username'] ) . '" placeholder="Login" class="input" value="' . esc_attr( $args['value_username'] ) . '" size="20" />
 			</p>
 			<p class="login-password">
 				<label for="' . esc_attr( $args['id_password'] ) . '">' . esc_html( $args['label_password'] ) . '</label>
-				<input type="password" name="pwd" id="' . esc_attr( $args['id_password'] ) . '" class="input" value="" size="20" />
+				<input type="password" name="pwd" id="' . esc_attr( $args['id_password'] ) . '" placeholder="Senha" class="input" value="" size="20" />
 			</p>
 			' . apply_filters( 'login_form_middle', '', $args ) . '
 			' . ( $args['remember'] ? '<p class="login-remember"><label><input name="rememberme" type="checkbox" id="' . esc_attr( $args['id_remember'] ) . '" value="forever"' . ( $args['value_remember'] ? ' checked="checked"' : '' ) . ' /> ' . esc_html( $args['label_remember'] ) . '</label></p>' : '' ) . '
 			<p class="login-submit">
-				<input type="submit" name="wp-submit" id="' . esc_attr( $args['id_submit'] ) . '" class="button-primary" value="' . esc_attr( $args['label_log_in'] ) . '" />
+				
+				<a class="wsl_connect_with_provider login_g" title="Connect with Google" href="http://localhost/gamescola/wp-login.php?action=wordpress_social_authenticate&amp;provider=Google&amp;redirect_to=http%3A%2F%2Flocalhost%2Fgamescola%2Fwp-login.php%3Floggedout%3Dtrue" rel="nofollow">
+					entre 
+				</a>
 				<input type="hidden" name="redirect_to" value="' . esc_url( $args['redirect'] ) . '" />
 			</p>
 			' . apply_filters( 'login_form_bottom', '', $args ) . '
